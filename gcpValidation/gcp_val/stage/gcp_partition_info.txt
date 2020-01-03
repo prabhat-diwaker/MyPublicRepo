@@ -1,0 +1,5 @@
+us_nielsen_dl_secure.nlsn_dma_prod_fact:wk_end_dt,geo_region_cd
+ww_repl_dl_secure.repl_sku_in_stk_dly:bus_dt,op_cmpny_cd
+ww_pricing_dl_secure.sku_mumd_dly:geo_region_cd
+ww_core_dim_dl_tables.dl_calendar_dim:geo_region_cd
+ww_core_dim_dl_tables.dl_item_dim:op_cmpny_cd

@@ -1,0 +1,18 @@
+19/12/09 07:26:22 WARN conf.HiveConf: HiveConf of name hive.server2.enable.impersonation does not exist
+19/12/09 07:26:22 WARN conf.HiveConf: HiveConf of name hive.custom-extensions.root does not exist
+
+Logging initialized using configuration in file:/etc/hive/2.6.3.0-235/0/hive-log4j.properties
+Query ID = svcmdsedat_20191209072626_8d940549-87d7-4b3e-8987-a44a529493ae
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1574201808558_862078)
+
+Map 1: -/-	Reducer 2: 0/2	
+Map 1: 0/1	Reducer 2: 0/2	
+Map 1: 0(+1)/1	Reducer 2: 0/2	
+Map 1: 1/1	Reducer 2: 0/1	
+Map 1: 1/1	Reducer 2: 0(+1)/1	
+Map 1: 1/1	Reducer 2: 1/1	
+OK
+21554	|	US
+Time taken: 33.241 seconds, Fetched: 1 row(s)

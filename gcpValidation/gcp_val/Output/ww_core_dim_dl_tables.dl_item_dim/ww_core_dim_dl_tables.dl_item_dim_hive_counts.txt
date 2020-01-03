@@ -1,0 +1,63 @@
+19/12/09 07:28:11 WARN conf.HiveConf: HiveConf of name hive.server2.enable.impersonation does not exist
+19/12/09 07:28:11 WARN conf.HiveConf: HiveConf of name hive.custom-extensions.root does not exist
+
+Logging initialized using configuration in file:/etc/hive/2.6.3.0-235/0/hive-log4j.properties
+Query ID = svcmdsedat_20191209072815_60108ef5-6b3f-47c1-bd4a-538b1275c9bd
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1574201808558_862149)
+
+Map 1: -/-	Reducer 2: 0/44	
+Map 1: 0/31	Reducer 2: 0/44	
+Map 1: 0/31	Reducer 2: 0/44	
+Map 1: 0/31	Reducer 2: 0/44	
+Map 1: 0/31	Reducer 2: 0/44	
+Map 1: 0/31	Reducer 2: 0/44	
+Map 1: 0(+1)/31	Reducer 2: 0/44	
+Map 1: 0(+3)/31	Reducer 2: 0/44	
+Map 1: 0(+4)/31	Reducer 2: 0/44	
+Map 1: 0(+6)/31	Reducer 2: 0/44	
+Map 1: 0(+7)/31	Reducer 2: 0/44	
+Map 1: 0(+8)/31	Reducer 2: 0/44	
+Map 1: 0(+11)/31	Reducer 2: 0/44	
+Map 1: 0(+12)/31	Reducer 2: 0/44	
+Map 1: 1(+12)/31	Reducer 2: 0/44	
+Map 1: 1(+13)/31	Reducer 2: 0/44	
+Map 1: 1(+14)/31	Reducer 2: 0/44	
+Map 1: 1(+16)/31	Reducer 2: 0/44	
+Map 1: 3(+15)/31	Reducer 2: 0/44	
+Map 1: 3(+17)/31	Reducer 2: 0/44	
+Map 1: 4(+16)/31	Reducer 2: 0/44	
+Map 1: 5(+15)/31	Reducer 2: 0/44	
+Map 1: 6(+15)/31	Reducer 2: 0/44	
+Map 1: 9(+12)/31	Reducer 2: 0/44	
+Map 1: 11(+11)/31	Reducer 2: 0/44	
+Map 1: 12(+10)/31	Reducer 2: 0/44	
+Map 1: 13(+9)/31	Reducer 2: 0/44	
+Map 1: 14(+9)/31	Reducer 2: 0/44	
+Map 1: 14(+10)/31	Reducer 2: 0/44	
+Map 1: 15(+10)/31	Reducer 2: 0/44	
+Map 1: 16(+10)/31	Reducer 2: 0/44	
+Map 1: 17(+10)/31	Reducer 2: 0/44	
+Map 1: 17(+11)/31	Reducer 2: 0/44	
+Map 1: 18(+11)/31	Reducer 2: 0/44	
+Map 1: 19(+10)/31	Reducer 2: 0/44	
+Map 1: 20(+10)/31	Reducer 2: 0/44	
+Map 1: 20(+11)/31	Reducer 2: 0/44	
+Map 1: 20(+11)/31	Reducer 2: 0/44	
+Map 1: 21(+10)/31	Reducer 2: 0/44	
+Map 1: 22(+9)/31	Reducer 2: 0/44	
+Map 1: 23(+8)/31	Reducer 2: 0/44	
+Map 1: 24(+7)/31	Reducer 2: 0(+2)/6	
+Map 1: 24(+7)/31	Reducer 2: 0(+6)/6	
+Map 1: 26(+5)/31	Reducer 2: 0(+6)/6	
+Map 1: 27(+4)/31	Reducer 2: 0(+6)/6	
+Map 1: 28(+3)/31	Reducer 2: 0(+6)/6	
+Map 1: 29(+2)/31	Reducer 2: 0(+6)/6	
+Map 1: 30(+1)/31	Reducer 2: 0(+6)/6	
+Map 1: 31/31	Reducer 2: 0(+6)/6	
+Map 1: 31/31	Reducer 2: 4(+1)/6	
+Map 1: 31/31	Reducer 2: 6/6	
+OK
+31239523	|	WMT-US
+Time taken: 87.467 seconds, Fetched: 1 row(s)

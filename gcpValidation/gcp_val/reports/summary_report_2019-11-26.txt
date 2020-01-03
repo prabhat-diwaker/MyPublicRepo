@@ -1,0 +1,22 @@
+-------------------------------- us_nielsen_dl_secure.nlsn_dma_prod_fact,us_nielsen_dl_secure.nlsn_dma_prod_fact-------------------------------- 
+total_gcp_partitions : 16 
+total_hive_partitions : 16 
+Total count in Hive for Matching partitions :2505979926 
+Total count in GCP for Matching partitions :2505979926 
+Partitions not present in GCP : set([]) 
+Partitions not present in Hive : set([]) 
+Counts not matching in these partitions : 
+PASSED !! 
+
+
+-------------------------------- ww_repl_dl_tables.repl_sku_in_stk_dly,ww_repl_dl_secure.repl_sku_in_stk_dly-------------------------------- 
+total_gcp_partitions : 1253 
+total_hive_partitions : 1255 
+Total count in Hive for Matching partitions :536656907823 
+Total count in GCP for Matching partitions :536656907823 
+Partitions not present in GCP : set(['2019-06-04WMT-US', '2019-06-03WMT-US']) 
+Partitions not present in Hive : set([]) 
+Counts not matching in these partitions : 
+FAILED !! 
+
+

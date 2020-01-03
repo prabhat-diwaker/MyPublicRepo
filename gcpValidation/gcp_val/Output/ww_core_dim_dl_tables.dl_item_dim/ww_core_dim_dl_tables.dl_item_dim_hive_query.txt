@@ -1,0 +1,4 @@
+hive -e "set hive.execution.engine=tez; SET tez.queue.name=mdsedatload; SET hive.exec.compress.intermediate=true; SET hive.tez.auto.reducer.parallelism=true;SET hive.exec.reducers.bytes.per.reducer=268435456;SET tez.grouping.max-size=67108864;SET tez.queue.name=mdsedatload;SET hive.tez.container.size=4096;SET tez.am.resource.memory.mb=2148;SET hive.tez.java.opts=-Xmx6553m;SET tez.runtime.unordered.output.buffer.size-mb=819;SET tez.am.resource.memory.mb=4096;select count(*) as count, '|',op_cmpny_cd
+ from ww_core_dim_dl_tables.dl_item_dim where op_cmpny_cd = 'WMT-US' group by op_cmpny_cd
+"
+
