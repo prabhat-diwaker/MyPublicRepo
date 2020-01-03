@@ -1,0 +1,203 @@
+
+drop table if exists fd_oos.data_prep_item_dim ;
+create table fd_oos.data_prep_item_dim 
+(
+mds_fam_id int,
+geo_region_cd char(2),
+curr_ind tinyint,
+item_nbr int ,
+item_desc_1 string,
+upc_nbr decimal(18,0),
+cntry_nm string,
+dept_nbr smallint,
+dept_desc string,
+op_cmpny_cd string,
+dept_catg_nbr int,
+dept_catg_desc string,
+prod_nbr int,
+prod_desc string,
+brand_id int,
+brand_nm string,
+brand_ownr_nm string,
+item_type_desc string
+) 
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '$'
+LINES TERMINATED BY '\n'
+STORED AS TEXTFILE;
+
+
+insert overwrite table fd_oos.data_prep_item_dim 
+select 
+mds_fam_id ,
+geo_region_cd,
+curr_ind,
+item_nbr,
+item_desc_1,
+upc_nbr,
+cntry_nm,
+dept_nbr,
+dept_desc,
+op_cmpny_cd,
+dept_catg_nbr,
+dept_catg_desc,
+prod_nbr,
+prod_desc,
+brand_id,
+brand_nm,
+brand_ownr_nm,
+item_type_desc from 
+(
+select 
+mds_fam_id ,
+geo_region_cd,
+curr_ind,
+item_nbr,
+item_desc_1,
+upc_nbr,
+cntry_nm,
+dept_nbr,
+dept_desc,
+op_cmpny_cd,
+dept_catg_nbr,
+dept_catg_desc,
+prod_nbr,
+prod_desc,
+brand_id,
+brand_nm,
+brand_ownr_nm,
+item_type_desc,
+ROW_NUMBER() OVER (PARTITION by dept_desc ORDER BY mds_fam_id desc) as rank
+from ww_core_dim_dl_tables.dl_item_dim where op_cmpny_cd='WMT-US' and curr_ind=1 
+)a where rank <=500;
+
+
+
+
+
+
+
+create table fd_oos.data_prep_fd_Store(
+store_nbr int,
+geo_region_cd string,
+store_nm string,
+region_nbr int,
+region_nm string,
+market_nbr int,
+market_nm string,
+city_nm string,
+state_prov_cd string,
+load_ts string,
+op_cmpny_cd string
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '$'
+LINES TERMINATED BY '\n'
+STORED AS TEXTFILE;
+
+
+
+insert overwrite table fd_oos.data_prep_fd_Store
+select
+store_nbr,
+geo_region_cd,
+store_nm,
+region_nbr,
+region_nm,
+market_nbr,
+market_nm,
+city_nm,
+state_prov_cd,
+load_ts,
+op_cmpny_cd
+from us_fd_tables.fd_store;
+
+
+drop table if exists fd_oos.data_prep_dim_calendar;
+create table fd_oos.data_prep_dim_calendar
+(
+cal_dt date,
+date_desc varchar(50),
+wm_wk_day_nbr smallint,
+wm_yr_wk_nbr int,
+wm_mth_nbr int,
+wm_mth_nm varchar(50),
+wm_qtr_nm varchar(50),
+wm_half_yr_nbr int,
+wm_half_yr_nm varchar(50),
+wm_yr_desc varchar(50),
+geo_region_cd string
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '$'
+LINES TERMINATED BY '\n'
+STORED AS TEXTFILE;
+
+
+insert overwrite table fd_oos.data_prep_dim_calendar
+select 
+cal_dt,
+date_desc,
+wm_wk_day_nbr,
+wm_yr_wk_nbr,
+wm_mth_nbr,
+wm_mth_nm,
+wm_qtr_nm,
+wm_half_yr_nbr,
+wm_half_yr_nm,
+wm_yr_desc,
+geo_region_cd
+from 
+ww_core_dim_dl_tables.dl_calendar_dim where cal_dt >= '2000-01-01';
+
+set hive.exec.compress.output=false;
+SET hive.merge.tezfiles=true;
+SET hive.merge.smallfiles.avgsize=15000000;
+SET hive.merge.size.per.task=15000000;
+
+
+
+drop table fd_oos.fact_in_stk_dly;
+CREATE TABLE `fd_oos.fact_in_stk_dly`(                         
+  `store_nbr` int,                                             
+  `geo_region_cd` char(2),                                     
+  `mds_fam_id` int,                                            
+  `sys_repl_cd` smallint,                                      
+  `frac_instk_pct` decimal(9,4),                               
+  `src_rcv_ts` timestamp,                                      
+  `load_userid` varchar(20),                                   
+  `load_ts` timestamp,                                         
+  `upd_ts` timestamp,                                          
+  `upd_userid` varchar(20),                                    
+  `onhand_each_qty` int,                                       
+  `fcst_dmand_each_qty` decimal(9,2) ,                                                                       
+  `bus_dt` date,                                               
+  `op_cmpny_cd` varchar(8))                                    
+ROW FORMAT SERDE                                               
+  'org.apache.hadoop.hive.ql.io.orc.OrcSerde'                  
+STORED AS INPUTFORMAT                                          
+  'org.apache.hadoop.hive.ql.io.orc.OrcInputFormat'            
+OUTPUTFORMAT                                                   
+  'org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat'           
+LOCATION                                                       
+  'gs://wmt-merch-out-of-stock-poc/fd_oos.db/fact_in_stk_dly'  
+TBLPROPERTIES (                                                
+  'transient_lastDdlTime'='1571318059') ;
+
+insert overwrite table fd_oos.fact_in_stk_dly 
+select 
+`store_nbr` ,                                             
+  `geo_region_cd` ,                                     
+  `mds_fam_id` ,                                            
+  `sys_repl_cd` ,                                      
+  `frac_instk_pct` ,                               
+  `src_rcv_ts` ,                                      
+  `load_userid` ,                                   
+  `load_ts` ,                                         
+  `upd_ts` ,                                          
+  `upd_userid` ,                                    
+  `onhand_each_qty` ,                                       
+  `fcst_dmand_each_qty`  ,                                                                       
+  `bus_dt` ,                                               
+  `op_cmpny_cd` from ww_repl_dl_secure.repl_sku_in_stk_dly where bus_dt > '2019-10-10' and op_cmpny_cd='WMT-US' and mds_fam_id in (
+  select mds_fam_id from fd_oos.data_prep_item_dim);

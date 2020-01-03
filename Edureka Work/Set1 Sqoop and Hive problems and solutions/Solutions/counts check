@@ -1,0 +1,44 @@
+dim calendar 200897
+dim_item 72100
+dim_store 6068
+dim_region 148
+fact scan 8080628
+fact instk 3425327
+fact store out of stock 280014
+
+
+dim_Calendar 200893
+dim_item 72100
+dim_store 6068
+dim_region 148
+fact_scan 8080628
+fact_instk 3425327
+fact out of stock 280014
+
+
+
+
+dim_calendar :
+/mnt/bigdatapgp/edureka_719925/data_prep/dim_calendar/
+
+dim_item :
+create table p_dim_item as select * from dim_item;
+
+dim_store:
+create table p_dim_store as select * from dim_store;
+
+dim_region:
+/mnt/bigdatapgp/edureka_719925/data_prep/dim_region
+
+fact_instk_dly
+create table p_fact_instk_dly as select * from fact_instk_dly;
+
+fact_scanv_dly
+/mnt/bigdatapgp/edureka_719925/data_prep/fact_scanv_dly/
+
+
+
+
+
+
+
