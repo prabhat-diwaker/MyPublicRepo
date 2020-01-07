@@ -1,4 +1,0 @@
-beeline -u "jdbc:hive2://gmerfdpc101-105.us-central1.us.walmart.net:2181,gmerfdpc101-102.us-central1.us.walmart.net:2181,gmerfdpc101-106.us-central1.us.walmart.net:2181,gmerfdpc101-103.us-central1.us.walmart.net:2181,gmerfdpc101-0.us-central1.us.walmart.net:2181/;serviceDiscoveryMode=zooKeeper;zooKeeperNamespace=hiveserver2" --showHeader=false  --silent=false --outputformat=tsv2 -e "select count(*) as count, '|',wk_end_dt,geo_region_cd
- from us_nielsen_dl_secure.nlsn_dma_prod_fact where geo_region_cd = 'US' group by wk_end_dt,geo_region_cd
-"
-

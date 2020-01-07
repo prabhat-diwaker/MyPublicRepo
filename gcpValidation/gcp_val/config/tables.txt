@@ -1,4 +1,0 @@
-ww_pricing_dl_tables.sku_mumd_dly,ww_pricing_dl_secure.sku_mumd_dly
-ww_core_dim_dl_tables.dl_calendar_dim,ww_core_dim_dl_tables.dl_calendar_dim
-ww_core_dim_dl_tables.dl_item_dim,ww_core_dim_dl_tables.dl_item_dim
-ww_core_dim_dl_tables.dl_item_dim,ww_core_dim_dl_tables.store_dim

@@ -1,2 +1,0 @@
-Partitions        |       hive_count    |    gcp_count      |     run_date
-US    |    10651150257    |    NULL    |    2019-12-09
